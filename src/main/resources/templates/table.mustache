@@ -78,9 +78,20 @@ Hello, world!
 <h2><span>Таблица организаций-заказчиков</span></h2>
 <div class="box">
     <h2>Добавить запись в таблицу</h2>
-    <form method="post" action="/addCustomer">
-        <input type="text" name="fullname">
-        <input type="text" name="info">
+    <form onsubmit="
+        var payload = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({ author: this.author.value , message: this.message.value })
+    };
+    fetch('http://localhost:8080/notice', payload);
+    location.reload();
+    return false;
+    ">
+        <input type="text" name="author">
+        <input type="text" name="message">
         <button type="submit">Добавить</button>
     </form>
     <table style="width: 100%; cellpadding: 5; cellspacing: 0">
