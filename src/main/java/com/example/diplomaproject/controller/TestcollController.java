@@ -21,8 +21,14 @@ public class TestcollController {
         return testcollService.save(testcoll);
     }
 
+//    @PostMapping
+//    public Mono<Void> delete(@RequestParam String id) { return testcollService.delete(id); }
+
+    @DeleteMapping
+    public Mono<Void> deleteById(@RequestParam(value="id") String id) { return testcollService.deleteById(id); }
+
     @GetMapping
-    public Flux<Testcoll> get() {
-        return testcollService.get();
+    public Flux<Testcoll> getAll() {
+        return testcollService.getAll();
     }
 }
