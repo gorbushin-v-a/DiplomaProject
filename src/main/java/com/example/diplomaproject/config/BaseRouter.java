@@ -1,7 +1,7 @@
 package com.example.diplomaproject.config;
 
-import com.example.diplomaproject.handler.GreetingHandler;
-import com.example.diplomaproject.service.TestcollService;
+import com.example.diplomaproject.handler.BaseHandler;
+import com.example.diplomaproject.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +11,13 @@ import org.springframework.web.reactive.function.server.*;
 import java.util.Map;
 
 @Configuration
-public class GreetingRouter {
+public class BaseRouter {
 
     @Autowired
-    private TestcollService testcollService;
+    private NoticeService noticeService;
 
     @Bean
-    public RouterFunction<ServerResponse> route(GreetingHandler greetingHandler) {
+    public RouterFunction<ServerResponse> route(BaseHandler baseHandler) {
         RequestPredicate routeHello = RequestPredicates
                 .GET("/hello")
                 .and(RequestPredicates.accept(MediaType.TEXT_PLAIN));
@@ -25,13 +25,11 @@ public class GreetingRouter {
         RequestPredicate routeTable = RequestPredicates.GET("/table");
 
         return RouterFunctions
-                .route(routeHello, greetingHandler::hello)
+                .route(routeHello, baseHandler::hello)
                 .andRoute(routeTable,
-                        serverRequest -> {
-                            return ServerResponse
-                                    .ok()
-                                    .render("index", Map.of("testcoll", testcollService.getAll()));
-                        }
+                        serverRequest -> ServerResponse
+                                .ok()
+                                .render("table", Map.of("notice", noticeService.getAll()))
                 );
     }
 }

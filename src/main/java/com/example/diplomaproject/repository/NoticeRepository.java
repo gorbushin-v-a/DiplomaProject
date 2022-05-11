@@ -1,11 +1,11 @@
 package com.example.diplomaproject.repository;
 
-import com.example.diplomaproject.documents.Testcoll;
+import com.example.diplomaproject.documents.Notice;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TestcollRepository extends ReactiveMongoRepository<Testcoll, String> {
+public interface NoticeRepository extends ReactiveMongoRepository<Notice, String> {
 
 
 }

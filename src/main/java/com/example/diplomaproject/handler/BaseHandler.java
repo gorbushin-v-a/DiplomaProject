@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Component
-public class GreetingHandler {
+public class BaseHandler {
 
     public Mono<ServerResponse> hello(ServerRequest request) {
         BodyInserter<String, ReactiveHttpOutputMessage> body =

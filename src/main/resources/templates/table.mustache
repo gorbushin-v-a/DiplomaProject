@@ -62,16 +62,16 @@ Hello, world!
 
 <table>
     <tr>
-        <th>firstName</th>
-        <th>lastName</th>
+        <th>author</th>
+        <th>message</th>
     </tr>
 
-    {{#testcoll}}
+    {{#notice}}
     <tr>
-        <td>{{firstName}}</td>
-        <td>{{lastName}}</td>
+        <td>{{author}}</td>
+        <td>{{message}}</td>
     </tr>
-    {{/testcoll}}
+    {{/notice}}
 
 </table>
 
@@ -102,14 +102,14 @@ Hello, world!
             <td class="colcap"><pre>Контактные данные</pre></td>
             <td class="colcap"><pre></pre></td>
         </tr>
-        {{#testcoll}}
+        {{#notice}}
         <tr>
             <td class="colnone">{{id}}</td>
-            <td class="col1">{{firstName}}</td>
-            <td class="col2">{{lastName}}</td>
+            <td class="col1">{{author}}</td>
+            <td class="col2">{{message}}</td>
             <td class="colbutton"><pre><form action="/deleteCustomer" method="post"><input type="hidden" name="personCustomer" value="{{id}}"><input type="submit" value="Удалить" /></form></pre></td>
         </tr>
-        {{/testcoll}}
+        {{/notice}}
     </table>
 </div>
 

@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Testcoll {
+public class Notice {
 
     @Id
     private String id;
-    private String firstName;
-    private String lastName;
+    private String author;
+    private String message;
 }
