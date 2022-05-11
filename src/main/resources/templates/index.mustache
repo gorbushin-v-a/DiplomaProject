@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            background: #B0C4DE;
+            color: #FFFFFF;
+        }
+        TD {
+            vertical-align: top;
+        }
+        .col1 {
+            outline: 2px solid #000;
+            width: 50%;
+            background: #008B8B;
+            color: #000000;
+        }
+        .col2 {
+            outline: 2px solid #000;
+            width: 50%;
+            background: #20B2AA;
+            color: #000000;
+        }
+        .col3 {
+            outline: 2px solid #000;
+            width: 50%;
+            background: #66CDAA;
+            color: #000000;
+        }
+        .colbutton {
+            outline: 2px solid #000;
+            width: 1%;
+            background: #66CDAA;
+            color: #000000;
+        }
+        .colcap {
+            outline: 2px solid #000;
+            background: #87CEEB;
+            color: #000000;
+        }
+        .colnone {
+            display:none;
+            background: #87CEEB;
+            color: #000000;
+        }
+        .box {
+            outline: 2px solid #000;
+            background: #AFEEEE;
+            color: #000000;
+        }
+    </style>
+
+</head>
+<body>
+Hello, world!
+
+<table>
+    <tr>
+        <th>firstName</th>
+        <th>lastName</th>
+    </tr>
+
+    {{#testcoll}}
+    <tr>
+        <td>{{firstName}}</td>
+        <td>{{lastName}}</td>
+    </tr>
+    {{/testcoll}}
+
+</table>
+
+<h2><span>Таблица организаций-заказчиков</span></h2>
+<div class="box">
+    <h2>Добавить запись в таблицу</h2>
+    <form method="post" action="/addCustomer">
+        <input type="text" name="fullname">
+        <input type="text" name="info">
+        <button type="submit">Добавить</button>
+    </form>
+    <form method="post" action="/roll">
+        <button type="submit">Отменить</button>
+    </form>
+    <form method="post" action="/commit">
+        <button type="submit">Сохранить</button>
+    </form>
+    <h2>Найти записи в таблице</h2>
+    <form method="post" action="/findCustomer">
+        <input type="text" name="fullname">
+        <input type="text" name="info">
+        <button type="submit">Найти</button>
+    </form>
+    <table style="width: 100%; cellpadding: 5; cellspacing: 0">
+        <tr>
+            <td class="colnone"><pre>id</pre></td>
+            <td class="colcap"><pre>Наименование организации заказчика</pre></td>
+            <td class="colcap"><pre>Контактные данные</pre></td>
+            <td class="colcap"><pre></pre></td>
+        </tr>
+        {{#testcoll}}
+        <tr>
+            <td class="colnone">{{id}}</td>
+            <td class="col1">{{firstName}}</td>
+            <td class="col2">{{lastName}}</td>
+            <td class="colbutton"><pre><form action="/deleteCustomer" method="post"><input type="hidden" name="personCustomer" value="{{id}}"><input type="submit" value="Удалить" /></form></pre></td>
+        </tr>
+        {{/testcoll}}
+    </table>
+</div>
+
+</body>
+</html>
