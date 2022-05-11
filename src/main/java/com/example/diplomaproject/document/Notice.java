@@ -1,4 +1,4 @@
-package com.example.diplomaproject.documents;
+package com.example.diplomaproject.document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

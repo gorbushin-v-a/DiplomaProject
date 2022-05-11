@@ -1,6 +1,6 @@
 package com.example.diplomaproject.service;
 
-import com.example.diplomaproject.documents.Notice;
+import com.example.diplomaproject.document.Notice;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

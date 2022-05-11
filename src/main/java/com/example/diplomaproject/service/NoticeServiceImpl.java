@@ -1,6 +1,6 @@
 package com.example.diplomaproject.service;
 
-import com.example.diplomaproject.documents.Notice;
+import com.example.diplomaproject.document.Notice;
 import com.example.diplomaproject.repository.NoticeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

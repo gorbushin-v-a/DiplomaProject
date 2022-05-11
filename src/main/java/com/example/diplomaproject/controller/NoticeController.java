@@ -1,6 +1,6 @@
 package com.example.diplomaproject.controller;
 
-import com.example.diplomaproject.documents.Notice;
+import com.example.diplomaproject.document.Notice;
 import com.example.diplomaproject.service.NoticeService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -83,18 +83,6 @@ Hello, world!
         <input type="text" name="info">
         <button type="submit">Добавить</button>
     </form>
-    <form method="post" action="/roll">
-        <button type="submit">Отменить</button>
-    </form>
-    <form method="post" action="/commit">
-        <button type="submit">Сохранить</button>
-    </form>
-    <h2>Найти записи в таблице</h2>
-    <form method="post" action="/findCustomer">
-        <input type="text" name="fullname">
-        <input type="text" name="info">
-        <button type="submit">Найти</button>
-    </form>
     <table style="width: 100%; cellpadding: 5; cellspacing: 0">
         <tr>
             <td class="colnone"><pre>id</pre></td>
@@ -104,10 +92,20 @@ Hello, world!
         </tr>
         {{#notice}}
         <tr>
-            <td class="colnone">{{id}}</td>
-            <td class="col1">{{author}}</td>
-            <td class="col2">{{message}}</td>
-            <td class="colbutton"><pre><form action="/deleteCustomer" method="post"><input type="hidden" name="personCustomer" value="{{id}}"><input type="submit" value="Удалить" /></form></pre></td>
+            <td class="colnone"><pre>{{id}}</pre></td>
+            <td class="col1"><pre>{{author}}</pre></td>
+            <td class="col2"><pre>{{message}}</pre></td>
+            <td class="colbutton"><pre>
+                <form onsubmit="
+                fetch('http://localhost:8080/notice?id={{id}}', {method: 'DELETE'});
+                location.reload();
+                return false;
+                ">
+                    <input type="hidden" name="id" value={{id}}>
+                    <input type="submit" value="Удалить" />
+                </form>
+            </pre>
+            </td>
         </tr>
         {{/notice}}
     </table>

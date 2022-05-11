@@ -13,9 +13,6 @@ import java.util.Map;
 @Configuration
 public class BaseRouter {
 
-    @Autowired
-    private NoticeService noticeService;
-
     @Bean
     public RouterFunction<ServerResponse> route(BaseHandler baseHandler) {
         RequestPredicate routeHello = RequestPredicates
@@ -23,13 +20,11 @@ public class BaseRouter {
                 .and(RequestPredicates.accept(MediaType.TEXT_PLAIN));
 
         RequestPredicate routeTable = RequestPredicates.GET("/table");
+        RequestPredicate routeTableDalete = RequestPredicates.DELETE("/table");
 
         return RouterFunctions
                 .route(routeHello, baseHandler::hello)
-                .andRoute(routeTable,
-                        serverRequest -> ServerResponse
-                                .ok()
-                                .render("table", Map.of("notice", noticeService.getAll()))
-                );
+                .andRoute(routeTable, baseHandler::table);
+//                .andRoute(routeTableDalete, baseHandler::tableDelete);
     }
 }
