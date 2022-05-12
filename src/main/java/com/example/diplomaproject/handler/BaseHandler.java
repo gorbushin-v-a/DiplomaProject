@@ -2,11 +2,7 @@ package com.example.diplomaproject.handler;
 
 import com.example.diplomaproject.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserter;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -20,16 +16,6 @@ public class BaseHandler {
     @Autowired
     private NoticeService noticeService;
 
-//    public Mono<ServerResponse> hello(ServerRequest request) {
-//        BodyInserter<String, ReactiveHttpOutputMessage> body =
-//                BodyInserters.fromValue("Hello, Spring!");
-//
-//        return ServerResponse
-//                .ok()
-//                .contentType(MediaType.TEXT_PLAIN)
-//                .body(body);
-//    }
-
     public Mono<ServerResponse> hello(ServerRequest request) {
         return ServerResponse
                 .ok()
@@ -41,12 +27,4 @@ public class BaseHandler {
                 .ok()
                 .render("table", Map.of("notice", noticeService.getAll()));
     }
-
-//    public Mono<ServerResponse> tableDelete(ServerRequest request) {
-//        String id = request.queryParam("id").get();
-//        Mono<Void> t = noticeService.deleteById(id);  //метод не удаляет
-//        return ServerResponse
-//                .ok()
-//                .render("table", Map.of("notice", noticeService.getAll()));
-//    }
 }

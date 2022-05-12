@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Table</title>
     <script src="../static/js/scripts.js"></script>
     <link rel="stylesheet" href="../static/css/style.css" />
 
@@ -32,7 +32,6 @@
             margin-bottom: 20px;
             border-collapse: separate;
             table-layout: fixed;
-            width:100%
         }
         .table thead th {
             text-align: left;
@@ -154,6 +153,10 @@
         .buttont:hover,.form button:active,.form button:focus {
             background: #43A047;
         }
+        p.text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 22px;
+        }
     </style>
 
 </head>
@@ -162,9 +165,17 @@
 <div class="add-page">
     <div class="form">
         <form class="add-form" onsubmit="addRequest(this)">
-            <input type="text" name="author" placeholder="автор"/>
-            <input type="text" name="message" placeholder="сообщение"/>
+            <p class="text">Форма добавления записей</p>
+            <label>
+                <input type="text" name="author" placeholder="автор"/>
+            </label>
+            <label>
+                <input type="text" name="message" placeholder="сообщение"/>
+            </label>
             <button type="submit">добавить</button>
+        </form>
+        <form class="add-form" action="http://localhost:8080/hello">
+            <button>вернуться на главную</button>
         </form>
     </div>
 </div>

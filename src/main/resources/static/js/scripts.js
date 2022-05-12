@@ -1,4 +1,4 @@
-function addRequest(form) {
+function addRequestAd(form) {
     const payload = {
         method: 'POST',
         headers: {
